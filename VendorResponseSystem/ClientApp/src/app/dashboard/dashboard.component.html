@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="filter-section">
+    <legend>Filter PO and Responses</legend>
+    <div class="filter-inputs">
+      <input type="text" placeholder="Buyer Code" [(ngModel)]="buyercode" (input)="onFilterChanged()" />
+      <input type="text" placeholder="Vend Code" [(ngModel)]="vendcode" (input)="onFilterChanged()" />
+      <input type="text" placeholder="PO number" [(ngModel)]="poNumber" (input)="onFilterChanged()" />
+      <input type="text" placeholder="POITEM number" [(ngModel)]="poitemnumber" (input)="onFilterChanged()" />
+      <button class="reset-button" (click)="resetFilters()">
+        <i class="material-icons">restart_alt</i>
+      </button>
+    </div>
+  </div>
+
+  <div class="grids-section">
+    <div class="grid-container">
+      <legend>PO Line Items</legend>
+      <ag-grid-angular #poLineItemsGrid
+                       style="width: 100%; height: 300px;"
+                       class="ag-theme-alpine"
+                       [rowData]="poLineItemDetails"
+                       [columnDefs]="columnDefs"
+                       [defaultColDef]="defaultColDef"
+                       [animateRows]="true"
+                       [gridOptions]="gridOptions"
+                       (rowClicked)="onRowClicked($event)">
+      </ag-grid-angular>
+    </div>
+
+    <div class="grid-container">
+      <legend>PO Responses</legend>
+      <ag-grid-angular #poResponsesGrid
+                       style="width: 100%; height: 300px;"
+                       class="ag-theme-alpine"
+                       [rowData]="filteredWorks"
+                       [columnDefs]="columnDefs_work"
+                       [defaultColDef]="defaultColDef"
+                       [animateRows]="true"
+                       [gridOptions]="gridOptions">
+      </ag-grid-angular>
+    </div>
+  </div>
+  <fieldset>
+    <legend>Request and Response Progress</legend>
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px;">
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [type]="'pie'"
+              [options]="pieChartOptions">
+      </canvas>
+    </div>
+  </fieldset>
+</div>

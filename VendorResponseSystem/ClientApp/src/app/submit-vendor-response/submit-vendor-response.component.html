@@ -1,0 +1,72 @@
+<div class="container" *ngIf="vendorResponseForm; else noResponse">
+  <mat-card>
+    <mat-card-title>Order Details</mat-card-title>
+    <mat-card-content>
+      <p><strong>User:</strong> {{ model.user }}</p>
+      <p><strong>PO Number:</strong> {{ model.ponumber }}</p>
+      <p><strong>Part Number:</strong> {{ model.partnumber }}</p>
+      <p><strong>Description:</strong> {{ model.partdescription }}</p>
+      <p><strong>Ship Quantity:</strong> {{ model.shipqty }}</p>
+      <p><strong>Promise Date:</strong> {{ model.promisedate }}</p>
+      <p><strong>Comments:</strong> {{ model.comments }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <form [formGroup]="vendorResponseForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-title>Enter Details</mat-card-title>
+      <mat-card-content>
+
+        <div *ngIf="model.showdeliverydate">
+          <mat-form-field appearance="outline">
+            <mat-label>Delivery Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="deliverydate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="f.deliverydate.errors?.required">Delivery Date is required</mat-error>
+            <mat-error *ngIf="f.deliverydate.errors?.matDatepickerParse">Invalid Date Format</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="model.showquantity">
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput formControlName="quantity" type="number">
+            <mat-error *ngIf="f.quantity.errors?.required">Quantity is required</mat-error>
+            <mat-error *ngIf="f.quantity.errors?.pattern">Must be a numeric value</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="model.showprice">
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price" type="text">
+            <mat-error *ngIf="f.price.errors?.required">Price is required</mat-error>
+            <mat-error *ngIf="f.price.errors?.pattern">Invalid decimal format</mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="model.showtrackingnumber">
+          <mat-form-field appearance="outline">
+            <mat-label>Tracking Number</mat-label>
+            <input matInput formControlName="trackingNumber" type="text">
+            <mat-error *ngIf="f.trackingNumber.errors?.required">Tracking Number is required</mat-error>            
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="vendorResponseForm.invalid">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+
+<ng-template #noResponse>
+  <div class="no-response-message">
+    <mat-card>
+      <mat-card-content>
+        <p><strong>No requests found</strong></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

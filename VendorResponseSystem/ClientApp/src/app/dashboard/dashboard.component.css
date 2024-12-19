@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-inputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+  .filter-inputs input {
+    padding: 5px;
+  }
+
+.reset-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 14px;
+}
+
+.grids-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid-container {
+  width: 100%;
+}

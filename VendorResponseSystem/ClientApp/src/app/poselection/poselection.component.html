@@ -1,0 +1,35 @@
+<div class="POSelectionContainer">
+  <h2>Select Purchase Order</h2>
+  <h5>Select the Purchase Orders for which you want to send Email.</h5>
+  <form [formGroup]="poSelectionForm" (ngSubmit)="submit()">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="poLineItems" class="full-width-table">
+
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>Select</th>
+          <td mat-cell *matCellDef="let item">
+            <mat-checkbox (change)="onCheckboxChange($event, item)"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="po">
+          <th mat-header-cell *matHeaderCellDef>PO</th>
+          <td mat-cell *matCellDef="let item">{{ item.po }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="poitem">
+          <th mat-header-cell *matHeaderCellDef>PO Item</th>
+          <td mat-cell *matCellDef="let item">{{ item.poitem }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <div class="button-group">
+      <button mat-raised-button type="button" (click)="close()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="selectedItems.length === 0">Send Email</button>
+    </div>
+  </form>
+</div>

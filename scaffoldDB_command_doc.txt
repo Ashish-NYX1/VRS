@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "server=NYXWEB5\NYXWEB5;user=sa;password=spec007$;database=VendorResponse; TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir DataModels -t BuyerVendorConfiguration

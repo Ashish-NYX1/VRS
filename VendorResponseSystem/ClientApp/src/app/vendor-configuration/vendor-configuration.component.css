@@ -1,0 +1,37 @@
+.form-container {
+  padding: 16px;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.grid-item {
+  flex: 1 1 calc(50% - 8px); /* Two columns with 16px gap */
+}
+
+.button-container {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.vertical-check-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+.heading-margin{
+    margin-left: 20%;
+}
+mat-form-field{
+    margin-left: 20px;
+}
+.disableConfigDv{    
+    margin-left: 15%;
+}
+.mdc-form-field > label {
+  font-weight: bold!important;
+  font-size: large!important;
+}

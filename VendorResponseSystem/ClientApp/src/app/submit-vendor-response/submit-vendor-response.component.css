@@ -1,0 +1,32 @@
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  margin-right: 32%;
+}
+
+mat-card {
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+
+.no-response-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; 
+  text-align: center;
+  margin-right: 312px;
+}
+
+  .no-response-message mat-card {
+    max-width: 400px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .no-response-message mat-card-content {
+    font-size: 1.2rem;
+    color: #555;
+  }

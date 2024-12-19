@@ -1,0 +1,13 @@
+.full-width-table {
+  width: 90%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.POSelectionContainer{
+    margin: 5px 5px 5px 5px;
+    padding: 2px 2px 2px 2px;
+}

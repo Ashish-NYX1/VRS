@@ -1,0 +1,7 @@
+<body [ngClass]="{'toggle-sidebar': sidebarToggle}">
+  <app-nav-menu (doToggle)="handleToggle($event)"></app-nav-menu>
+  <main id="main" [ngClass]="{'main': !isLoginPage}">   
+    <app-progress></app-progress>
+    <router-outlet></router-outlet>
+  </main>
+</body>

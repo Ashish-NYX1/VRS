@@ -1,0 +1,45 @@
+<div *ngIf="vendorConfigurationForm">
+  <form [formGroup]="vendorConfigurationForm" (ngSubmit)="submitVendorConfiguration()" class="form-container">
+    <h3 class="heading-margin">Vendor Configuration</h3>
+    <div class="disableConfigDv">
+      <mat-checkbox formControlName="disableConfiguration">Disable Configuration</mat-checkbox>&nbsp;&nbsp;&nbsp;
+      <mat-checkbox formControlName="hideVendor">Hide Vendor</mat-checkbox>
+    </div>
+    <mat-form-field>
+      <label>Frequency</label>
+      <input matInput type="number" formControlName="frequency" />
+    </mat-form-field>
+    <mat-form-field>
+      <label>Vendor Name</label>
+      <input matInput type="text" formControlName="vendorName" />
+    </mat-form-field>
+    <mat-form-field>
+      <label>Vendor Email</label>
+      <input matInput type="text" formControlName="vendorEmail" />
+      <span style="font-size:xx-small; color: red;">(Seperate emails with comma(,))</span>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Comments</mat-label>
+      <textarea matInput placeholder="Enter Comments" rows="5" formControlName="vendorComments"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>NYX Notes</mat-label>
+      <textarea matInput placeholder="Enter NYX Notes" rows="5" formControlName="nyxNotes"></textarea>
+    </mat-form-field>
+    <div class="checkbox-group">
+      <label>Confirmation Options</label>
+      <div formGroupName="confirmationOption" class="vertical-check-group">
+        <mat-checkbox formControlName="ConfirmedDeliveryDate">Confirmed Delivery Date</mat-checkbox>
+        <mat-checkbox formControlName="ConfirmedQuantity">Confirmed Quantity</mat-checkbox>
+        <mat-checkbox formControlName="ConfirmedPrice">Confirmed Price</mat-checkbox>
+        <mat-checkbox formControlName="ConfirmedTrackingNo">Confirmed Tracking Number</mat-checkbox>
+      </div>
+    </div>
+    <div class="grid-item button-container">
+      <input type="button" (click)="resetForm()" value="Reset" /> &nbsp;&nbsp;
+      <input type="button" (click)="updateInCMS()" value="Update in CMS" /> &nbsp;&nbsp;
+      <input type="button" [disabled]="vendorConfigurationForm.invalid" (click)="checkPOs()" value="Send Email" /> &nbsp;&nbsp;
+      <button [disabled]="vendorConfigurationForm.invalid" mat-button type="submit" color="primary">Submit</button>
+    </div>
+  </form>
+</div>
